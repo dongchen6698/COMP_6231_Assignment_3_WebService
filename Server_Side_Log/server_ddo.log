@@ -1,0 +1,12 @@
+Jul 14, 2016 5:35:51 PM Server_Side.Server_DDO.Clinic_DDO_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jul 14, 2016 5:35:51 PM Server_Side.Server_DDO.Clinic_DDO_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 14, 2016 5:36:09 PM Server_Side.Server_DDO.Clinic_DDO_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jul 14, 2016 5:36:09 PM Server_Side.Server_DDO.Clinic_DDO_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr

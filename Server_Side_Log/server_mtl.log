@@ -1,0 +1,46 @@
+Jul 14, 2016 3:52:47 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10000
+Start a new thread to handle this.
+Jul 14, 2016 3:52:47 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10000 valid or not.
+Jul 14, 2016 3:53:03 PM Server_Side.Server_MTL.Clinic_MTL_Impl createDRecord
+INFO: Manager: mtl10000 Creat Doctor Record: 
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abc
+location: mtl
+
+Jul 14, 2016 5:35:34 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10000
+Start a new thread to handle this.
+Jul 14, 2016 5:35:34 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10000 valid or not.
+Jul 14, 2016 5:35:46 PM Server_Side.Server_MTL.Clinic_MTL_Impl createDRecord
+INFO: Manager: mtl10000 Creat Doctor Record: 
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: add
+Phone: 123123
+specialization: abc
+location: mtl
+
+Jul 14, 2016 5:35:51 PM Server_Side.Server_MTL.Clinic_MTL_Impl getRecordCounts
+INFO: Manager: mtl10000 search RecordCounts: 
+MTL DR: 3
+LVL DR: 0
+DDO DR: 1
+
+Jul 14, 2016 5:36:03 PM Server_Side.Server_MTL.Clinic_MTL_Impl transferRecord
+INFO: Manager: mtl10000 transfer recordID: dr10000 to lvlsuccess
+Jul 14, 2016 5:36:09 PM Server_Side.Server_MTL.Clinic_MTL_Impl getRecordCounts
+INFO: Manager: mtl10000 search RecordCounts: 
+MTL DR: 2
+LVL DR: 1
+DDO DR: 1
+

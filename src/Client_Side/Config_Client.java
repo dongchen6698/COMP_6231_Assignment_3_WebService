@@ -11,7 +11,9 @@ import java.util.logging.Logger;
 public class Config_Client {
 	static String MANAGER_ID = null;
 	static String HOST = "127.0.0.1";
-	static Client_Side.Web_MTL.ClinicServersInterface DSMS_IMPL = null;
+	static Client_Side.Web_MTL.ClinicServersInterface DSMS_MTL_IMPL = null;
+	static Client_Side.Web_LVL.ClinicServersInterface DSMS_LVL_IMPL = null;
+	static Client_Side.Web_DDO.ClinicServersInterface DSMS_DDO_IMPL = null;
 	static int SERVER_PORT_MTL = 6001;
 	static int SERVER_PORT_LVL = 6002;
 	static int SERVER_PORT_DDO = 6003;

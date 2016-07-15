@@ -110,34 +110,40 @@ public class ManagerClients {
 	}
 	
 	/**
-	 * If managerID is valid, this function is for get the stub of that server.
+	 * If managerID is valid, this function is for get the MTL stub of that server.
 	 * @param managerID
 	 * @return
 	 * @throws Exception
 	 */
-	public static Client_Side.Web_MTL.ClinicServersInterface getServerReferrence(String managerID){
-		try {
-			if(managerID.substring(0, 3).equalsIgnoreCase("mtl")){
-				ClinicMTLImplService mtl_service = new ClinicMTLImplService();
-				Client_Side.Web_MTL.ClinicServersInterface mtl_port = mtl_service.getClinicMTLImplPort();
-				return mtl_port;
-				
-//			}else if(managerID.substring(0, 3).equalsIgnoreCase("lvl")){
-//				ClinicLVLImplService lvl_service = new ClinicLVLImplService();
-//				Client_Side.Web_LVL.ClinicServersInterface lvl_port = lvl_service.getClinicLVLImplPort();
-//				return lvl_port;
-//				
-//			}else if(managerID.substring(0, 3).equalsIgnoreCase("ddo")){
-//				ClinicDDOImplService ddo_service = new ClinicDDOImplService();
-//				Client_Side.Web_DDO.ClinicServersInterface ddo_port = ddo_service.getClinicDDOImplPort();
-//				return ddo_port;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
-		return null;
+	public static Client_Side.Web_MTL.ClinicServersInterface getMTLServerReferrence(){
+			ClinicMTLImplService mtl_service = new ClinicMTLImplService();
+			Client_Side.Web_MTL.ClinicServersInterface mtl_port = mtl_service.getClinicMTLImplPort();
+			return mtl_port;
 	}
 	
+	/**
+	 * If managerID is valid, this function is for get the LVL stub of that server.
+	 * @param managerID
+	 * @return
+	 * @throws Exception
+	 */
+	public static Client_Side.Web_LVL.ClinicServersInterface getLVLServerReferrence(){
+			ClinicLVLImplService lvl_service = new ClinicLVLImplService();
+			Client_Side.Web_LVL.ClinicServersInterface lvl_port = lvl_service.getClinicLVLImplPort();
+			return lvl_port;
+	}
+	
+	/**
+	 * If managerID is valid, this function is for get the DDO stub of that server.
+	 * @param managerID
+	 * @return
+	 * @throws Exception
+	 */
+	public static Client_Side.Web_DDO.ClinicServersInterface getDDOServerReferrence(){
+			ClinicDDOImplService ddo_service = new ClinicDDOImplService();
+			Client_Side.Web_DDO.ClinicServersInterface ddo_port = ddo_service.getClinicDDOImplPort();
+			return ddo_port;
+	}
 	/**
 	 * Define the Menu list.
 	 * @param managerID
@@ -183,8 +189,135 @@ public class ManagerClients {
 		initLogger(Config_Client.MANAGER_ID);
 		Config_Client.LOGGER.info("ManagerID: "+ Config_Client.MANAGER_ID + " log in DSMS.");
 		
-		try {
-			Config_Client.DSMS_IMPL = getServerReferrence(Config_Client.MANAGER_ID);
+		if(Config_Client.MANAGER_ID.substring(0, 3).equalsIgnoreCase("mtl")){
+			operation_MTL();
+		}else if(Config_Client.MANAGER_ID.substring(0, 3).equalsIgnoreCase("lvl")){
+			operation_LVL();
+		}else if(Config_Client.MANAGER_ID.substring(0, 3).equalsIgnoreCase("ddo")){
+			operation_DDO();
+		}
+							
+	}
+	
+	public static void operation_MTL(){
+		try{
+		Config_Client.DSMS_MTL_IMPL = getMTLServerReferrence();
+		int userChoice=0;
+		Scanner keyboard = new Scanner(System.in);
+		showMenu(Config_Client.MANAGER_ID);
+		
+		while(true)
+		{
+			Boolean valid = false;
+			while(!valid)
+			{
+				try{
+					userChoice=keyboard.nextInt();
+					valid=true;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Invalid Input, please enter an Integer");
+					valid=false;
+					keyboard.nextLine();
+				}
+			}
+			
+			switch(userChoice)
+			{
+			case 1: 
+				Config_Client.LOGGER.info("Manager Choose Creat Doctor Record.");
+				System.out.println("Please input the FirstName");
+				String d_firstname = keyboard.next();
+				System.out.println("Please input the LastName");
+				String d_lastname = keyboard.next();
+				System.out.println("Please input the Address");
+				String d_address = keyboard.next();
+				System.out.println("Please input the Phone");
+				String d_phone = keyboard.next();
+				System.out.println("Please input the Specialization");
+				String d_specialization = keyboard.next();
+				System.out.println("Please input the Location(mtl/lvl/ddo)");
+				String d_location =keyboard.next();
+				String d_result = Config_Client.DSMS_MTL_IMPL.createDRecord(Config_Client.MANAGER_ID, d_firstname, d_lastname, d_address, d_phone, d_specialization, d_location);
+				System.out.println(d_result);
+				if(!d_result.contains("is not right")){
+					Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + d_result);
+				}
+				showMenu(Config_Client.MANAGER_ID);
+				break;
+			case 2:
+				Config_Client.LOGGER.info("Manager Choose Creat Nurse Record.");
+				System.out.println("Please input the FirstName");
+				String n_firstname = keyboard.next();
+				System.out.println("Please input the LastName");
+				String n_lastname = keyboard.next();
+				System.out.println("Please input the Designation(junior/senior)");
+				String n_designation = keyboard.next();
+				System.out.println("Please input the Status(active/terminated)");
+				String n_status = keyboard.next();
+				System.out.println("Please input the Status Date(yyyy/mm/dd/)");
+				String n_status_date = keyboard.next();
+				String n_result = Config_Client.DSMS_MTL_IMPL.createNRecord(Config_Client.MANAGER_ID ,n_firstname, n_lastname, n_designation, n_status, n_status_date);
+				System.out.println(n_result);
+				if(!n_result.contains("is not right")){
+					Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + n_result);
+				}
+				showMenu(Config_Client.MANAGER_ID);
+				break;
+			case 3:
+				Config_Client.LOGGER.info("Manager Choose Get Record Counts.");
+				System.out.println("Please input search type");
+				String searchtype = keyboard.next();
+				String s_result = Config_Client.DSMS_MTL_IMPL.getRecordCounts(Config_Client.MANAGER_ID, searchtype);
+				System.out.println(s_result);
+				Config_Client.LOGGER.info("Get Record Counts: " + "\n" + s_result);
+				showMenu(Config_Client.MANAGER_ID);
+				break;
+			case 4:
+				Config_Client.LOGGER.info("Manager Choose Edit Record.");
+				System.out.println("Please input the RecordID");
+				String e_recordID = keyboard.next();
+				System.out.println("Please input the FieldName");
+				String e_fieldname = keyboard.next();
+				System.out.println("Please input the New Value");
+				String e_newvalue = keyboard.next();
+				String e_result = Config_Client.DSMS_MTL_IMPL.editRecord(Config_Client.MANAGER_ID, e_recordID, e_fieldname, e_newvalue);
+				System.out.println(e_result);
+				if(!e_result.contains("is not right")){
+					Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + e_result);
+				}
+				showMenu(Config_Client.MANAGER_ID);
+				break;
+			case 5:
+				Config_Client.LOGGER.info("Manager Choose Transfer Record.");
+				System.out.println("Please input the RecordID");
+				String t_recordID = keyboard.next();
+				System.out.println("Please input the remote clinic server name.(mtl/lvl/ddo)");
+				String t_remoteClinicServerName = keyboard.next();
+				String t_result = Config_Client.DSMS_MTL_IMPL.transferRecord(Config_Client.MANAGER_ID, t_recordID, t_remoteClinicServerName);
+				System.out.println(t_result);
+				if(!t_result.contains("is not right")){
+					Config_Client.LOGGER.info("Manager Transfer Record Succeed!" + "\n" + t_result);
+				}
+				showMenu(Config_Client.MANAGER_ID);
+				break;
+			case 6:
+				Config_Client.LOGGER.info("Manager Exit the DSMS");
+				System.out.println("Have a nice day!");
+				keyboard.close();
+				System.exit(0);
+			default:
+				System.out.println("Invalid Input, please try again.");
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	}
+	public static void operation_LVL(){
+		try{
+			Config_Client.DSMS_LVL_IMPL = getLVLServerReferrence();
 			int userChoice=0;
 			Scanner keyboard = new Scanner(System.in);
 			showMenu(Config_Client.MANAGER_ID);
@@ -222,7 +355,7 @@ public class ManagerClients {
 					String d_specialization = keyboard.next();
 					System.out.println("Please input the Location(mtl/lvl/ddo)");
 					String d_location =keyboard.next();
-					String d_result = Config_Client.DSMS_IMPL.createDRecord(Config_Client.MANAGER_ID, d_firstname, d_lastname, d_address, d_phone, d_specialization, d_location);
+					String d_result = Config_Client.DSMS_LVL_IMPL.createDRecord(Config_Client.MANAGER_ID, d_firstname, d_lastname, d_address, d_phone, d_specialization, d_location);
 					System.out.println(d_result);
 					if(!d_result.contains("is not right")){
 						Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + d_result);
@@ -241,7 +374,7 @@ public class ManagerClients {
 					String n_status = keyboard.next();
 					System.out.println("Please input the Status Date(yyyy/mm/dd/)");
 					String n_status_date = keyboard.next();
-					String n_result = Config_Client.DSMS_IMPL.createNRecord(Config_Client.MANAGER_ID ,n_firstname, n_lastname, n_designation, n_status, n_status_date);
+					String n_result = Config_Client.DSMS_LVL_IMPL.createNRecord(Config_Client.MANAGER_ID ,n_firstname, n_lastname, n_designation, n_status, n_status_date);
 					System.out.println(n_result);
 					if(!n_result.contains("is not right")){
 						Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + n_result);
@@ -252,7 +385,7 @@ public class ManagerClients {
 					Config_Client.LOGGER.info("Manager Choose Get Record Counts.");
 					System.out.println("Please input search type");
 					String searchtype = keyboard.next();
-					String s_result = Config_Client.DSMS_IMPL.getRecordCounts(Config_Client.MANAGER_ID, searchtype);
+					String s_result = Config_Client.DSMS_LVL_IMPL.getRecordCounts(Config_Client.MANAGER_ID, searchtype);
 					System.out.println(s_result);
 					Config_Client.LOGGER.info("Get Record Counts: " + "\n" + s_result);
 					showMenu(Config_Client.MANAGER_ID);
@@ -265,7 +398,7 @@ public class ManagerClients {
 					String e_fieldname = keyboard.next();
 					System.out.println("Please input the New Value");
 					String e_newvalue = keyboard.next();
-					String e_result = Config_Client.DSMS_IMPL.editRecord(Config_Client.MANAGER_ID, e_recordID, e_fieldname, e_newvalue);
+					String e_result = Config_Client.DSMS_LVL_IMPL.editRecord(Config_Client.MANAGER_ID, e_recordID, e_fieldname, e_newvalue);
 					System.out.println(e_result);
 					if(!e_result.contains("is not right")){
 						Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + e_result);
@@ -278,7 +411,7 @@ public class ManagerClients {
 					String t_recordID = keyboard.next();
 					System.out.println("Please input the remote clinic server name.(mtl/lvl/ddo)");
 					String t_remoteClinicServerName = keyboard.next();
-					String t_result = Config_Client.DSMS_IMPL.transferRecord(Config_Client.MANAGER_ID, t_recordID, t_remoteClinicServerName);
+					String t_result = Config_Client.DSMS_LVL_IMPL.transferRecord(Config_Client.MANAGER_ID, t_recordID, t_remoteClinicServerName);
 					System.out.println(t_result);
 					if(!t_result.contains("is not right")){
 						Config_Client.LOGGER.info("Manager Transfer Record Succeed!" + "\n" + t_result);
@@ -296,6 +429,122 @@ public class ManagerClients {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}				
+		}
+		}
+	public static void operation_DDO(){
+		try{
+			Config_Client.DSMS_DDO_IMPL = getDDOServerReferrence();
+			int userChoice=0;
+			Scanner keyboard = new Scanner(System.in);
+			showMenu(Config_Client.MANAGER_ID);
+			
+			while(true)
+			{
+				Boolean valid = false;
+				while(!valid)
+				{
+					try{
+						userChoice=keyboard.nextInt();
+						valid=true;
+					}
+					catch(Exception e)
+					{
+						System.out.println("Invalid Input, please enter an Integer");
+						valid=false;
+						keyboard.nextLine();
+					}
+				}
+				
+				switch(userChoice)
+				{
+				case 1: 
+					Config_Client.LOGGER.info("Manager Choose Creat Doctor Record.");
+					System.out.println("Please input the FirstName");
+					String d_firstname = keyboard.next();
+					System.out.println("Please input the LastName");
+					String d_lastname = keyboard.next();
+					System.out.println("Please input the Address");
+					String d_address = keyboard.next();
+					System.out.println("Please input the Phone");
+					String d_phone = keyboard.next();
+					System.out.println("Please input the Specialization");
+					String d_specialization = keyboard.next();
+					System.out.println("Please input the Location(mtl/lvl/ddo)");
+					String d_location =keyboard.next();
+					String d_result = Config_Client.DSMS_DDO_IMPL.createDRecord(Config_Client.MANAGER_ID, d_firstname, d_lastname, d_address, d_phone, d_specialization, d_location);
+					System.out.println(d_result);
+					if(!d_result.contains("is not right")){
+						Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + d_result);
+					}
+					showMenu(Config_Client.MANAGER_ID);
+					break;
+				case 2:
+					Config_Client.LOGGER.info("Manager Choose Creat Nurse Record.");
+					System.out.println("Please input the FirstName");
+					String n_firstname = keyboard.next();
+					System.out.println("Please input the LastName");
+					String n_lastname = keyboard.next();
+					System.out.println("Please input the Designation(junior/senior)");
+					String n_designation = keyboard.next();
+					System.out.println("Please input the Status(active/terminated)");
+					String n_status = keyboard.next();
+					System.out.println("Please input the Status Date(yyyy/mm/dd/)");
+					String n_status_date = keyboard.next();
+					String n_result = Config_Client.DSMS_DDO_IMPL.createNRecord(Config_Client.MANAGER_ID ,n_firstname, n_lastname, n_designation, n_status, n_status_date);
+					System.out.println(n_result);
+					if(!n_result.contains("is not right")){
+						Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + n_result);
+					}
+					showMenu(Config_Client.MANAGER_ID);
+					break;
+				case 3:
+					Config_Client.LOGGER.info("Manager Choose Get Record Counts.");
+					System.out.println("Please input search type");
+					String searchtype = keyboard.next();
+					String s_result = Config_Client.DSMS_DDO_IMPL.getRecordCounts(Config_Client.MANAGER_ID, searchtype);
+					System.out.println(s_result);
+					Config_Client.LOGGER.info("Get Record Counts: " + "\n" + s_result);
+					showMenu(Config_Client.MANAGER_ID);
+					break;
+				case 4:
+					Config_Client.LOGGER.info("Manager Choose Edit Record.");
+					System.out.println("Please input the RecordID");
+					String e_recordID = keyboard.next();
+					System.out.println("Please input the FieldName");
+					String e_fieldname = keyboard.next();
+					System.out.println("Please input the New Value");
+					String e_newvalue = keyboard.next();
+					String e_result = Config_Client.DSMS_DDO_IMPL.editRecord(Config_Client.MANAGER_ID, e_recordID, e_fieldname, e_newvalue);
+					System.out.println(e_result);
+					if(!e_result.contains("is not right")){
+						Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + e_result);
+					}
+					showMenu(Config_Client.MANAGER_ID);
+					break;
+				case 5:
+					Config_Client.LOGGER.info("Manager Choose Transfer Record.");
+					System.out.println("Please input the RecordID");
+					String t_recordID = keyboard.next();
+					System.out.println("Please input the remote clinic server name.(mtl/lvl/ddo)");
+					String t_remoteClinicServerName = keyboard.next();
+					String t_result = Config_Client.DSMS_DDO_IMPL.transferRecord(Config_Client.MANAGER_ID, t_recordID, t_remoteClinicServerName);
+					System.out.println(t_result);
+					if(!t_result.contains("is not right")){
+						Config_Client.LOGGER.info("Manager Transfer Record Succeed!" + "\n" + t_result);
+					}
+					showMenu(Config_Client.MANAGER_ID);
+					break;
+				case 6:
+					Config_Client.LOGGER.info("Manager Exit the DSMS");
+					System.out.println("Have a nice day!");
+					keyboard.close();
+					System.exit(0);
+				default:
+					System.out.println("Invalid Input, please try again.");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

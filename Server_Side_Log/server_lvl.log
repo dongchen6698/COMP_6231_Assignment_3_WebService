@@ -28,3 +28,57 @@ dr
 Start a new thread to handle this.
 Jul 14, 2016 5:36:09 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
 INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 14, 2016 11:17:38 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jul 14, 2016 11:17:38 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 14, 2016 11:17:54 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jul 14, 2016 11:17:54 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 14, 2016 11:18:07 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 001
+lvl10009
+Start a new thread to handle this.
+Jul 14, 2016 11:18:07 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: lvl10009 valid or not.
+Jul 14, 2016 11:18:10 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 001
+lvl10000
+Start a new thread to handle this.
+Jul 14, 2016 11:18:10 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: lvl10000 valid or not.
+Jul 14, 2016 11:18:15 PM Server_Side.Server_LVL.Clinic_LVL_Impl getRecordCounts
+INFO: Manager: lvl10000 search RecordCounts: 
+LVL DR: 0
+MTL DR: 3
+DDO DR: 1
+
+Jul 14, 2016 11:18:36 PM Server_Side.Server_LVL.Clinic_LVL_Impl createDRecord
+INFO: Manager: lvl10000 Creat Doctor Record: 
+RecordID: DR10001
+First Name: peilin
+Last Name: jiang
+Address: lal
+Phone: 123123
+specialization: abv
+location: lvl
+
+Jul 14, 2016 11:18:40 PM Server_Side.Server_LVL.Clinic_LVL_Impl getRecordCounts
+INFO: Manager: lvl10000 search RecordCounts: 
+LVL DR: 1
+MTL DR: 3
+DDO DR: 1
+
+Jul 14, 2016 11:18:54 PM Server_Side.Server_LVL.Clinic_LVL_Impl transferRecord
+INFO: Manager: lvl10000 transfer recordID: dr10001 to mtlsuccess
+Jul 14, 2016 11:18:58 PM Server_Side.Server_LVL.Clinic_LVL_Impl getRecordCounts
+INFO: Manager: lvl10000 search RecordCounts: 
+LVL DR: 0
+MTL DR: 4
+DDO DR: 1
+

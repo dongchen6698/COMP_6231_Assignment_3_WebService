@@ -51,3 +51,36 @@ MTL DR: 2
 LVL DR: 1
 DDO DR: 1
 
+Jul 14, 2016 11:17:32 PM Client_Side.ManagerClients main
+INFO: ManagerID: mtl10000 log in DSMS.
+Jul 14, 2016 11:17:37 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Choose Get Record Counts.
+Jul 14, 2016 11:17:38 PM Client_Side.ManagerClients operation_MTL
+INFO: Get Record Counts: 
+MTL DR: 2
+LVL DR: 0
+DDO DR: 1
+
+Jul 14, 2016 11:17:41 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Choose Creat Doctor Record.
+Jul 14, 2016 11:17:50 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Creat Doctor Record Succeed!
+Doctor Record Buid Succeed !
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abv
+location: mtl
+
+Jul 14, 2016 11:17:53 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Choose Get Record Counts.
+Jul 14, 2016 11:17:54 PM Client_Side.ManagerClients operation_MTL
+INFO: Get Record Counts: 
+MTL DR: 3
+LVL DR: 0
+DDO DR: 1
+
+Jul 14, 2016 11:17:56 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Exit the DSMS

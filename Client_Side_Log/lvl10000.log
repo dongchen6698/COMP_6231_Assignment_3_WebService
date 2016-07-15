@@ -1,0 +1,44 @@
+Jul 14, 2016 11:18:10 PM Client_Side.ManagerClients main
+INFO: ManagerID: lvl10000 log in DSMS.
+Jul 14, 2016 11:18:14 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Get Record Counts.
+Jul 14, 2016 11:18:15 PM Client_Side.ManagerClients operation_LVL
+INFO: Get Record Counts: 
+LVL DR: 0
+MTL DR: 3
+DDO DR: 1
+
+Jul 14, 2016 11:18:24 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Creat Doctor Record.
+Jul 14, 2016 11:18:36 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Creat Doctor Record Succeed!
+Doctor Record Buid Succeed !
+RecordID: DR10001
+First Name: peilin
+Last Name: jiang
+Address: lal
+Phone: 123123
+specialization: abv
+location: lvl
+
+Jul 14, 2016 11:18:39 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Get Record Counts.
+Jul 14, 2016 11:18:40 PM Client_Side.ManagerClients operation_LVL
+INFO: Get Record Counts: 
+LVL DR: 1
+MTL DR: 3
+DDO DR: 1
+
+Jul 14, 2016 11:18:50 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Transfer Record.
+Jul 14, 2016 11:18:54 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Transfer Record Succeed!
+Transfer doctor record success.
+Jul 14, 2016 11:18:57 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Get Record Counts.
+Jul 14, 2016 11:18:58 PM Client_Side.ManagerClients operation_LVL
+INFO: Get Record Counts: 
+LVL DR: 0
+MTL DR: 4
+DDO DR: 1
+

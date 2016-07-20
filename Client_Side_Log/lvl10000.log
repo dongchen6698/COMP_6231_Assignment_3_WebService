@@ -42,3 +42,39 @@ LVL DR: 0
 MTL DR: 4
 DDO DR: 1
 
+Jul 19, 2016 9:45:36 PM Client_Side.ManagerClients main
+INFO: ManagerID: lvl10000 log in DSMS.
+Jul 19, 2016 9:45:40 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Creat Doctor Record.
+Jul 19, 2016 9:45:52 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Creat Doctor Record Succeed!
+Doctor Record Buid Succeed !
+RecordID: DR10003
+First Name: laval
+Last Name: masdf
+Address: asd
+Phone: 123123
+specialization: abv
+location: lvl
+
+Jul 19, 2016 9:46:00 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Get Record Counts.
+Jul 19, 2016 9:46:08 PM Client_Side.ManagerClients operation_LVL
+INFO: Get Record Counts: 
+LVL DR: 1
+MTL DR: 4
+DDO DR: 1
+
+Jul 19, 2016 9:46:51 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Transfer Record.
+Jul 19, 2016 9:47:02 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Transfer Record Succeed!
+Transfer doctor record success.
+Jul 19, 2016 9:47:08 PM Client_Side.ManagerClients operation_LVL
+INFO: Manager Choose Get Record Counts.
+Jul 19, 2016 9:47:09 PM Client_Side.ManagerClients operation_LVL
+INFO: Get Record Counts: 
+LVL DR: 0
+MTL DR: 5
+DDO DR: 1
+

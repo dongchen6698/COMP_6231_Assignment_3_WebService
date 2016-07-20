@@ -37,10 +37,10 @@ public class Clinic_DDO_Impl implements ClinicServers_Interface{
 		recordID = "DR" + sendMessageToOtherServer(Config_DDO.SERVER_PORT_RECORDID_ASSIGN, "getRecordIdNumber", "");
 		doc_recorde_with_recordID = new RecordInfo(recordID, doc_recorde);
 		
-		synchronized (this) {
+		synchronized(Config_DDO.RECORD_LIST){
 			Config_DDO.RECORD_LIST.add(doc_recorde_with_recordID);
-			Config_DDO.HASH_TABLE.put(capital_lastname, Config_DDO.RECORD_LIST);
 		}
+		Config_DDO.HASH_TABLE.put(capital_lastname, Config_DDO.RECORD_LIST);
 		System.out.println(Config_DDO.LOGGER);
 		Config_DDO.LOGGER.info("Manager: "+ managerId + " Creat Doctor Record: "+ "\n" +doc_recorde_with_recordID.toString());
 		return "Doctor Record Buid Succeed !" + "\n" +doc_recorde_with_recordID.toString();
@@ -71,10 +71,10 @@ public class Clinic_DDO_Impl implements ClinicServers_Interface{
 		recordID = "NR" + sendMessageToOtherServer(Config_DDO.SERVER_PORT_RECORDID_ASSIGN, "getRecordIdNumber", "");
 		nur_recorde_with_recordID = new RecordInfo(recordID, nur_recorde);
 		
-		synchronized (this) {
+		synchronized (Config_DDO.RECORD_LIST) {
 			Config_DDO.RECORD_LIST.add(nur_recorde_with_recordID);
-			Config_DDO.HASH_TABLE.put(capital_lastname, Config_DDO.RECORD_LIST);
 		}
+		Config_DDO.HASH_TABLE.put(capital_lastname, Config_DDO.RECORD_LIST);
 		Config_DDO.LOGGER.info("Manager: "+ managerId + " Creat Nurse Record: "+ "\n" +nur_recorde_with_recordID.toString());
 		return "Nurse Record Buid Succeed !" + "\n" +nur_recorde_with_recordID.toString();
 	}
@@ -95,43 +95,46 @@ public class Clinic_DDO_Impl implements ClinicServers_Interface{
 			for(RecordInfo record:entry.getValue()){
 				if(recordID.equalsIgnoreCase(record.getRecordID())){
 					if(recordID.contains("DR")||recordID.contains("dr")){
-						if(fieldName.equalsIgnoreCase("Address")){
-							record.getDoctorRecord().setAddress(newValue);
-							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Address of Doctor Record: "+ "\n" + record.toString());
-							return "edit succeed !\n"+record.toString();
-						}else if(fieldName.equalsIgnoreCase("Phone")){
-							record.getDoctorRecord().setPhone(newValue);
-							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the phone of Doctor Record: "+ "\n" + record.toString());
-							return "edit succeed !\n"+record.toString();
-						}else if (fieldName.equalsIgnoreCase("Location")){
-							if(!checkLocation(newValue)){
-								return "Location is not right. Please input (mtl,lvl or ddo).\n";
+						synchronized (fieldName) {
+							if(fieldName.equalsIgnoreCase("Address")){
+								record.getDoctorRecord().setAddress(newValue);
+								Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Address of Doctor Record: "+ "\n" + record.toString());
+								return "edit succeed !\n"+record.toString();
+							}else if(fieldName.equalsIgnoreCase("Phone")){
+								record.getDoctorRecord().setPhone(newValue);
+								Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the phone of Doctor Record: "+ "\n" + record.toString());
+								return "edit succeed !\n"+record.toString();
+							}else if (fieldName.equalsIgnoreCase("Location")){
+								if(!checkLocation(newValue)){
+									return "Location is not right. Please input (mtl,lvl or ddo).\n";
+								}
+								record.getDoctorRecord().setLocation(newValue);
+								Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Location of Doctor Record: "+ "\n" + record.toString());
+								return "edit succeed !\n"+record.toString();
 							}
-							record.getDoctorRecord().setLocation(newValue);
-							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Location of Doctor Record: "+ "\n" + record.toString());
-							return "edit succeed !\n"+record.toString();
 						}
 					}else if(recordID.contains("NR")||recordID.contains("nr")){
-						if(fieldName.equalsIgnoreCase("Designation")){
-							if(!checkDesignation(newValue)){
-								return "Designation is not right. Please input (junior or senior).\n";
+						synchronized (fieldName) {
+							if(fieldName.equalsIgnoreCase("Designation")){
+								if(!checkDesignation(newValue)){
+									return "Designation is not right. Please input (junior or senior).\n";
+								}
+								record.getNurseRecord().setDesignation(newValue);
+								Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Designation of Nurse Record: "+ "\n" + record.toString());
+								return "edit succeed !\n"+record.toString();
+							}else if(fieldName.equalsIgnoreCase("Status")){
+								if(!checkStatus(newValue)){
+									return "Status is not right. Please input (active or terminated).\n";
+								}
+								record.getNurseRecord().setStatus(newValue);
+								Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Status of Nurse Record: "+ "\n" + record.toString());
+								return "edit succeed !\n"+record.toString();
+							}else if (fieldName.equalsIgnoreCase("statusDate")){
+								record.getNurseRecord().setStatusDate(newValue);
+								Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Status date of Nurse Record: "+ "\n" + record.toString());
+								return "edit succeed !\n"+record.toString();
 							}
-							record.getNurseRecord().setDesignation(newValue);
-							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Designation of Nurse Record: "+ "\n" + record.toString());
-							return "edit succeed !\n"+record.toString();
-						}else if(fieldName.equalsIgnoreCase("Status")){
-							if(!checkStatus(newValue)){
-								return "Status is not right. Please input (active or terminated).\n";
-							}
-							record.getNurseRecord().setStatus(newValue);
-							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Status of Nurse Record: "+ "\n" + record.toString());
-							return "edit succeed !\n"+record.toString();
-						}else if (fieldName.equalsIgnoreCase("statusDate")){
-							record.getNurseRecord().setStatusDate(newValue);
-							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Status date of Nurse Record: "+ "\n" + record.toString());
-							return "edit succeed !\n"+record.toString();
 						}
-						
 					}
 				}
 			}
@@ -140,7 +143,7 @@ public class Clinic_DDO_Impl implements ClinicServers_Interface{
 	}
 
 	@Override
-	public String transferRecord(String managerId, String recordID, String remoteClinicServerName) {
+	public synchronized String transferRecord(String managerId, String recordID, String remoteClinicServerName) {
 		if(!checkRecordIDExistOrNot(recordID)){
 			return "RecordID is not right. Please input again.\n";
 		}

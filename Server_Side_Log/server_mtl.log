@@ -108,3 +108,90 @@ dr
 Start a new thread to handle this.
 Jul 14, 2016 11:18:58 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
 INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 19, 2016 9:40:42 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10009
+Start a new thread to handle this.
+Jul 19, 2016 9:40:42 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10009 valid or not.
+Jul 19, 2016 9:44:04 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10000
+Start a new thread to handle this.
+Jul 19, 2016 9:44:04 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10000 valid or not.
+Jul 19, 2016 9:44:23 PM Server_Side.Server_MTL.Clinic_MTL_Impl createDRecord
+INFO: Manager: mtl10000 Creat Doctor Record: 
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abc
+location: mtl
+
+Jul 19, 2016 9:44:45 PM Server_Side.Server_MTL.Clinic_MTL_Impl createNRecord
+INFO: Manager: mtl10000 Creat Nurse Record: 
+RecordID: NR10001
+First Name: pei
+Last Name: lin
+Designation: junior
+Status: active
+StatusDate: 2012/12/12
+
+Jul 19, 2016 9:45:18 PM Server_Side.Server_MTL.Clinic_MTL_Impl createDRecord
+INFO: Manager: mtl10000 Creat Doctor Record: 
+RecordID: DR10002
+First Name: montreal
+Last Name: anbc
+Address: montreal
+Phone: 123123
+specialization: ab
+location: mtl
+
+Jul 19, 2016 9:46:08 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jul 19, 2016 9:46:08 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 19, 2016 9:47:02 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR10003
+First Name: laval
+Last Name: masdf
+Address: asd
+Phone: 123123
+specialization: abv
+location: lvl
+Start a new thread to handle this.
+Jul 19, 2016 9:47:02 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR10003
+First Name: laval
+Last Name: masdf
+Address: asd
+Phone: 123123
+specialization: abv
+location: lvl
+Jul 19, 2016 9:47:09 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jul 19, 2016 9:47:09 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 19, 2016 9:47:23 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10000
+Start a new thread to handle this.
+Jul 19, 2016 9:47:23 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10000 valid or not.
+Jul 19, 2016 9:48:36 PM Server_Side.Server_MTL.Clinic_MTL_Impl editRecord
+INFO: Manager: mtl10000 edit the phone of Doctor Record: 
+RecordID: DR10003
+First Name: laval
+Last Name: masdf
+Address: asd
+Phone: 123123
+specialization: abv
+location: lvl
+

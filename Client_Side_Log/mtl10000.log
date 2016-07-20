@@ -84,3 +84,63 @@ DDO DR: 1
 
 Jul 14, 2016 11:17:56 PM Client_Side.ManagerClients operation_MTL
 INFO: Manager Exit the DSMS
+Jul 19, 2016 9:44:04 PM Client_Side.ManagerClients main
+INFO: ManagerID: mtl10000 log in DSMS.
+Jul 19, 2016 9:44:14 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Choose Creat Doctor Record.
+Jul 19, 2016 9:44:23 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Creat Doctor Record Succeed!
+Doctor Record Buid Succeed !
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abc
+location: mtl
+
+Jul 19, 2016 9:44:32 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Choose Creat Nurse Record.
+Jul 19, 2016 9:44:45 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Creat Doctor Record Succeed!
+Nurse Record Buid Succeed !
+RecordID: NR10001
+First Name: pei
+Last Name: lin
+Designation: junior
+Status: active
+StatusDate: 2012/12/12
+
+Jul 19, 2016 9:44:59 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Choose Creat Doctor Record.
+Jul 19, 2016 9:45:18 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Creat Doctor Record Succeed!
+Doctor Record Buid Succeed !
+RecordID: DR10002
+First Name: montreal
+Last Name: anbc
+Address: montreal
+Phone: 123123
+specialization: ab
+location: mtl
+
+Jul 19, 2016 9:47:23 PM Client_Side.ManagerClients main
+INFO: ManagerID: mtl10000 log in DSMS.
+Jul 19, 2016 9:47:26 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Choose Edit Record.
+Jul 19, 2016 9:48:20 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Creat Doctor Record Succeed!
+edit failed
+Jul 19, 2016 9:48:25 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Choose Edit Record.
+Jul 19, 2016 9:48:36 PM Client_Side.ManagerClients operation_MTL
+INFO: Manager Creat Doctor Record Succeed!
+edit succeed !
+RecordID: DR10003
+First Name: laval
+Last Name: masdf
+Address: asd
+Phone: 123123
+specialization: abv
+location: lvl
+
